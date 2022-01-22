@@ -55,8 +55,8 @@
                 <h2>Liste des visite</h2>
             </div>
             <div class="buttons">
-                <a href="#" class="add">
-                    AJOUTER UNE VISITE
+                <a href="<?php echo BASE_URL ?>form_patient" class="add">
+                    AJOUTER UN PATIENT
                 </a>
                 <a href="#" class="logout">
                     Se deconneter
@@ -87,8 +87,27 @@
                     <td><?php echo $patient['birthday'] ?></td>
                     <td><?php echo $patient['phone'] ?></td>
                     <td><?php echo $patient['email'] ?></td>
-                    <td class="icon"><img src="<?php echo BASE_URL ?>images/icons/edit.png" alt=""></td>
-                    <td class="icon"><img src="<?php echo BASE_URL ?>images/icons/delete.png" alt=""></td>
+                    <td class="icon">
+                        <form method="POST" action="update_patient" class="mr-1">
+                            <input type="hidden" name="person_id" value="<?php echo $patient['person_id'] ?>">
+
+                            <button >
+                                <img src="<?php echo BASE_URL ?>images/icons/edit.png" alt="">
+                            </button>
+                        </form>
+
+                    </td>
+                    <td class="icon">
+                        <form method="POST" action="delete_patient" class="mr-1">
+                            <input type="hidden" name="person_id" value="<?php echo $patient['person_id'] ?>">
+
+                            <button >
+                                <img src="<?php echo BASE_URL ?>images/icons/delete.png" alt="">
+                            </button>
+                        </form>
+
+                    </td>
+<!--                    <td class="icon"><img src="--><?php //echo BASE_URL ?><!--images/icons/delete.png" alt=""></td>-->
                 <?php endforeach; ?>
 
 

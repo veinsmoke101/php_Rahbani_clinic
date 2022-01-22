@@ -4,7 +4,15 @@
     require_once('./controllers/HomeController.php');
 
     $home = new HomeController();
-    $pages = ['home', 'login', 'contact', 'patient_dashboard'];
+    $pages = [
+        'home',
+        'login',
+        'contact',
+        'patient_dashboard',
+        'add_patient',
+        'update_patient',
+        'delete_patient'
+    ];
 
     if(isset($_GET['page'])){
         if(in_array($_GET['page'], $pages)){

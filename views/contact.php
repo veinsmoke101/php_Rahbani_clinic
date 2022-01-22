@@ -29,7 +29,7 @@
         <div class="design">
             <form class="form-contact">
                 <div class="input2">
-                    <input name="nom" type="text" placeholder="Nom*" required>
+                    <input STYLE="width: 100%" name="nom" type="text" placeholder="Nom*" required>
                 </div>
                 <input name="phone" type="text" placeholder="Numéro du  tele*" required>
                 <input name="email" type="email" placeholder="E-mail*" required>
