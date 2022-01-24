@@ -1,27 +1,25 @@
-#navbar {
-  position: fixed;
+#navbar{
+  position:fixed;
   top: 0;
   left: 0;
   z-index: 99;
   width: 100%;
-  height: 109px;
+  height: 80px;
   background-color: white;
-  .container {
+  .container{
     width: auto;
-    margin: 2% 5%;
-    display: flex;
+    margin:1% 5%;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    img {
-      width: 51px;
+    @include flexRow(space-between, flex-start);
+    img{
+      width:51px;
       height: 51px;
-      @media (max-width: 768px) {
+      @media (max-width: 768px){
         width: 40px;
         height: 40px;
       }
     }
-    .hamburger {
+    .hamburger{
       display: none;
       position: relative;
       z-index: 1;
@@ -33,20 +31,20 @@
       cursor: pointer;
       margin-top: inherit;
 
-      &.is-active span:nth-child(1) {
+      &.is-active span:nth-child(1){
         transform: translate(0px, -2px) rotate(45deg);
         background-color: $Primary;
       }
-      &.is-active span:nth-child(2) {
+      &.is-active span:nth-child(2){
         opacity: 0;
         transform: translateX(15px);
       }
-      &.is-active span:nth-child(3) {
+      &.is-active span:nth-child(3){
         transform: translate(-3px, 3px) rotate(-45deg);
         background-color: $Primary;
       }
 
-      span {
+      span{
         display: block;
         height: 4px;
         width: 33px;
@@ -58,37 +56,33 @@
         transform-origin: 0 0;
         transition: 0.4s;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 768px){
         display: block;
       }
+
     }
     .menu {
       margin-top: revert;
-      display: flex;
       width: 50%;
-      justify-content: end;
-      align-items: center;
-      .nav-item a {
+
+      @include flexRow(flex-end,center);
+      .nav-item a{
         color: black;
-        font-weight: 500;
         font-size: 18px;
         margin-left: 16px;
         transition: 0.4s;
         border-radius: 99px;
         padding: 8px 16px;
-        &.is-active {
-          background-color: $Primary;
+        &.is-active{
+          background-color:$Primary  ;
           color: white;
         }
       }
-      &.active {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
+      &.active{
+        @include flexColumn(center,center);
         position: absolute;
         z-index: -1;
-        background-color: white;
+        background-color:white ;
         height: 100vh;
         width: 80%;
         top: 0;
@@ -96,13 +90,25 @@
         .nav-item {
           margin: 5% 0;
         }
+
+
       }
-      @media (max-width: 768px) {
+      @media (max-width: 768px){
         display: none;
       }
     }
+
+
   }
-  @media (max-width: 768px) {
+  @media (max-width: 768px){
     height: 66px;
   }
 }
+
+
+
+
+// body{
+//     background-color: black;
+//     height: 200vh;
+// }

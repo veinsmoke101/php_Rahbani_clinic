@@ -25,7 +25,7 @@
                 $data['username'] = $_POST['username'];
                 $result = Admin::getAdmin($data);
 
-                if($result->username === $_POST['username'] && $_POST['password']===$result->admin_password){
+                if($result->username === $_POST['username'] && sha1($_POST['password'])===$result->admin_password){
 
                     $_SESSION['username'] = $result->username;
                     Redirect::to('patient_dashboard');

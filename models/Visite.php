@@ -1,7 +1,17 @@
 <?php
 class Visite{
     static public function getAllVisits(){
-        $db= DB::connect()->prepare('SELECT * FROM visite');
+        $db= DB::connect()->prepare('SELECT
+        v.visite_id,
+        v.visite_date,
+        p1.firstname AS patient,
+        p2.firstname as medecin,
+        v.maladie,
+        v.facture
+        FROM person p1
+        JOIN visite v ON v.patient = p1.person_id
+        JOIN person p2 ON v.medecin = p2.person_id;
+');
         $db->execute();
         $Visits=$db->fetchAll();
         $db= null;
