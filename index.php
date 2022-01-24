@@ -7,11 +7,20 @@
     $pages = [
         'home',
         'login',
+        'logout',
         'contact',
         'patient_dashboard',
         'add_patient',
         'update_patient',
-        'delete_patient'
+        'delete_patient',
+        'medecin_dashboard',
+        'add_medecin',
+        'update_medecin',
+        'delete_medecin',
+        'visite_dashboard',
+        'add_visite',
+        'update_visite',
+        'delete_visite'
     ];
 
     if(isset($_GET['page'])){

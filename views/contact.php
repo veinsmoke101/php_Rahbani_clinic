@@ -1,5 +1,9 @@
 <?php
 //require_once '../bootstrap.php';
+    if(isset($_POST['submit'])){
+        $data = new ContactController();
+        $data->addMessage();
+    }
 ?>
 
 <html lang="en">
@@ -27,16 +31,21 @@
 
         </div>
         <div class="design">
-            <form class="form-contact">
+            <form method="post" class="form-contact">
                 <div class="input2">
-                    <input STYLE="width: 100%" name="nom" type="text" placeholder="Nom*" required>
+                    <input STYLE="width: 100%" name="name" type="text" placeholder="Nom*" required>
                 </div>
-                <input name="phone" type="text" placeholder="Numéro du  tele*" required>
+                <label style="width: 80%;height: 10%;margin-top:20px">
+                    <select style="width: 100%; height:80% " name="type">
+                        <option value="company">Company</option>
+                        <option value="person">Person</option>
+                    </select>
+                </label>
                 <input name="email" type="email" placeholder="E-mail*" required>
                 <textarea name="message" placeholder="message" class="message"></textarea>
 
                 <!-- <input class="button" type="submit" value="Envoyer"></input> -->
-                <button class="button" type="submit" >Envoyer</button>
+                <button class="button" name="submit" type="submit" >Envoyer</button>
 
 
             </form>

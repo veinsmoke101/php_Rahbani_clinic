@@ -55,5 +55,15 @@
                 return 'error';
 
         }
+
+        static public function delete($data){
+            $db = DB::connect()->prepare('DELETE FROM person 
+            WHERE person_id = :person_id');
+            $db->execute(array('person_id' => $data['person_id']));
+            if($db->execute()){
+                return 'ok';
+            }else
+                return 'error';
+        }
     }
 

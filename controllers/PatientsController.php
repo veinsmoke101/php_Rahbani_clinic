@@ -53,4 +53,20 @@
                 }
             }
         }
+
+        public function deletePatient(){
+            if(isset($_POST['person_id'])){
+
+                $data = array(
+                    'person_id' => $_POST['person_id']
+                );
+//                die(print_r($data));
+                $result = Patient::delete($data);
+                if($result !== 'ok'){
+                    echo $result;
+                } else{
+                    Redirect::to('patient_dashboard');
+                }
+            }
+        }
     }

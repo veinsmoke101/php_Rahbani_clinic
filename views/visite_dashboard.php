@@ -1,12 +1,9 @@
 <?php
-
     if(isset($_SESSION['username']) === false){
         Redirect::to('login');
     }
-
-    $data = new PatientsController();
-    $patients = $data->getAllPatients();
-
+    $data = new VisitesController();
+    $visits = $data->getAllVisits();
 ?>
 
 
@@ -22,8 +19,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo BASE_URL ?>styles/dashboard/dashboard.css" />
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   </head>
   <body>
   <nav class="nav-dashboard">
@@ -40,15 +35,15 @@
       </div>
       <div class="operation-menu">
           <ul>
-              <li style="background: #07BEB8">
+              <li>
                   <img src="./images/icons/patient-icon.svg" alt="" />
-                  <a  href="<?php echo BASE_URL?>patient_dashboard">Patient</a>
+                  <a href="<?php echo BASE_URL?>patient_dashboard">Patient</a>
               </li>
               <li>
                   <img src="./images/icons/Medecin-icon.svg" alt="" />
                   <a href="<?php echo BASE_URL?>medecin_dashboard">Medcin</a>
               </li>
-              <li>
+              <li style="background: #07BEB8">
                   <img src="./images/icons/visite-icon.svg" alt="" />
                   <a href="<?php echo BASE_URL?>visite_dashboard">Visite</a>
               </li>
@@ -59,11 +54,11 @@
   <main>
         <header>
             <div class="header-title">
-                <h2>Liste des patients</h2>
+                <h2>Liste des visite</h2>
             </div>
             <div class="buttons">
-                <a href="<?php echo BASE_URL ?>add_patient" class="add">
-                    AJOUTER UN PATIENT
+                <a href="<?php echo BASE_URL ?>add_visite" class="add">
+                    AJOUTER UNE VISITE
                 </a>
                 <a href="<?php echo BASE_URL?>logout" class="logout">
                     Se deconneter
@@ -75,40 +70,40 @@
         <table id="data-table" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>Patient_id</th>
-                    <th>firstname</th>
-                    <th>lastname</th>
-                    <th>birthday</th>
-                    <th>phone</th>
-                    <th>email</th>
+                    <th>visite_id</th>
+                    <th>visite_date</th>
+                    <th>facture</th>
+                    <th>maladie</th>
+                    <th>patient</th>
+                    <th>medecin</th>
 
                 </tr>
             </thead>
             <tbody>
 
-                <?php foreach ($patients as $patient): ?>
+                <?php foreach ($visits as $visite): ?>
                 <tr>
-                    <td><?php echo $patient['person_id'] ?></td>
-                    <td><?php echo $patient['firstname'] ?></td>
-                    <td><?php echo $patient['lastname'] ?></td>
-                    <td><?php echo $patient['birthday'] ?></td>
-                    <td><?php echo $patient['phone'] ?></td>
-                    <td><?php echo $patient['email'] ?></td>
+                    <td><?php echo $visite['visite_id'] ?></td>
+                    <td><?php echo $visite['visite_date'] ?></td>
+                    <td><?php echo $visite['facture'] ?></td>
+                    <td><?php echo $visite['maladie'] ?></td>
+                    <td><?php echo $visite['patient'] ?></td>
+                    <td><?php echo $visite['medecin'] ?></td>
                     <td class="icon">
-                        <form method="POST" action="update_patient" class="mr-1">
-                            <input type="hidden" name="person_id" value="<?php echo $patient['person_id'] ?>">
+                        <form method="POST" action="update_visite" class="mr-1">
+                            <input type="hidden" name="visite_id" value="<?php echo $visite['visite_id'] ?>">
 
-                            <button style="border:none; background:none;">
+                            <button style="border:none; background:none;" >
                                 <img src="<?php echo BASE_URL ?>images/icons/edit.png" alt="">
                             </button>
                         </form>
 
                     </td>
                     <td class="icon">
-                        <form method="POST" action="delete_patient" class="mr-1" onsubmit="return confirm('Êtes-vous sûr ? Vous ne pourrez pas revenir en arrière !');">
-                            <input type="hidden" name="person_id" value="<?php echo $patient['person_id'] ?>">
+                        <form method="POST" action="delete_visite" class="mr-1">
+                            <input type="hidden" name="visite_id" value="<?php echo $visite['visite_id'] ?>">
 
-                            <button style="border:none; background:none;">
+                            <button style="border:none; background:none;" >
                                 <img src="<?php echo BASE_URL ?>images/icons/delete.png" alt="">
                             </button>
                         </form>
@@ -122,25 +117,5 @@
             </tbody>
         </table>
     </main>
-<!--  <script>-->
-<!---->
-<!--      Swal.fire({-->
-<!--          title: 'Are you sure?',-->
-<!--          text: "You won't be able to revert this!",-->
-<!--          icon: 'warning',-->
-<!--          showCancelButton: true,-->
-<!--          confirmButtonColor: '#3085d6',-->
-<!--          cancelButtonColor: '#d33',-->
-<!--          confirmButtonText: 'Yes, delete it!'-->
-<!--      }).then((result) => {-->
-<!--          if (result.isConfirmed) {-->
-<!--              Swal.fire(-->
-<!--                  'Deleted!',-->
-<!--                  'Your file has been deleted.',-->
-<!--                  'success'-->
-<!--              )-->
-<!--          }-->
-<!--      })-->
-<!--  </script>-->
   </body>
 </html>

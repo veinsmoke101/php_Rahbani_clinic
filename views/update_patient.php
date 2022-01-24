@@ -1,8 +1,12 @@
 <?php
+
+    if(isset($_SESSION['username']) === false){
+        Redirect::to('login');
+    }
+
     if(isset($_POST['person_id'])){
-        $data = new PatientsController();
-        $patient = $data->getOnePatient();
-//        die(print_r($patient));
+            $data = new PatientsController();
+            $patient = $data->getOnePatient();
     }
     if(isset($_POST['submit'])){
         $data2 = new PatientsController();

@@ -1,6 +1,10 @@
 <?php
+    if(isset($_SESSION['username']) ){
+        Redirect::to('patient_dashboard');
+    }
 
     if(isset($_POST['submit'])){
+
         $loginAdmin = new AdminController();
         $loginAdmin->auth();
     }

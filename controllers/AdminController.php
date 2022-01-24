@@ -27,12 +27,10 @@
 
                 if($result->username === $_POST['username'] && $_POST['password']===$result->admin_password){
 
-                    $_SESSION['logged'] = true;
                     $_SESSION['username'] = $result->username;
                     Redirect::to('patient_dashboard');
 
                 }else{
-                    Session::set('error','username ou mot de passe est incorrecte !!');
                     Redirect::to('login');
                 }
             }
